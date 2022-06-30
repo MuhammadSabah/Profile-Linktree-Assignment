@@ -1,10 +1,12 @@
-import 'package:class_assignment/components/social_card.dart';
 import 'package:class_assignment/mock_data/data.dart';
-import 'package:class_assignment/models/social_model.dart';
+import 'package:class_assignment/src/components/social_card.dart';
+
+import 'package:class_assignment/src/models/social_model.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SocialLinksList extends StatelessWidget {
   const SocialLinksList({Key? key}) : super(key: key);
@@ -29,8 +31,23 @@ class SocialLinksList extends StatelessWidget {
           child: SizedBox(
             width: 300,
             height: 50,
-            child: SocialCard(
-              social: social,
+            child: InkWell(
+              onTap: () async {
+                final urlLink = Uri(
+                  scheme: 'https',
+                  host: social.socialLink,
+                  path: social.path,
+                );
+                if (!await launchUrl(
+                  urlLink,
+                  mode: LaunchMode.externalApplication,
+                )) {
+                  throw 'Could not launch $urlLink';
+                }
+              },
+              child: SocialCard(
+                social: social,
+              ),
             ),
           ),
         );

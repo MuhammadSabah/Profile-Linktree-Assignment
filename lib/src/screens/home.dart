@@ -1,8 +1,9 @@
-import 'package:class_assignment/components/bottom_icon.dart';
-import 'package:class_assignment/components/profile_image.dart';
-import 'package:class_assignment/components/social_links_list.dart';
+import 'package:class_assignment/src/components/profile_image.dart';
+import 'package:class_assignment/src/components/social_links_list.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../components/bottom_icon.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
