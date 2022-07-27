@@ -1,10 +1,6 @@
-import 'package:class_assignment/mock_data/data.dart';
+import 'package:class_assignment/mock/data.dart';
 import 'package:class_assignment/src/components/social_card.dart';
-
 import 'package:class_assignment/src/models/social_model.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
