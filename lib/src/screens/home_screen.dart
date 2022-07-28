@@ -1,16 +1,23 @@
-import 'package:class_assignment/src/components/profile_image.dart';
-import 'package:class_assignment/src/components/social_links_list.dart';
+import 'package:class_assignment/src/widgets/profile_image.dart';
+import 'package:class_assignment/src/widgets/social_card.dart';
+import 'package:class_assignment/src/screens/message_screen.dart';
+import 'package:class_assignment/src/widgets/social_links_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../components/bottom_icon.dart';
+import '../widgets/bottom_icon.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.white,
+      ),
+      child: Scaffold(
+        // resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: SafeArea(
           child: SizedBox(
@@ -18,7 +25,7 @@ class Home extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const SizedBox(height: 64),
+                  const SizedBox(height: 44),
                   const Align(
                     alignment: Alignment.topCenter,
                     child: ProfileImage(),
@@ -28,6 +35,7 @@ class Home extends StatelessWidget {
                     "Full Name".toUpperCase(),
                     style: const TextStyle(
                       fontSize: 24,
+                      color: Color(0xff404040),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -74,11 +82,21 @@ class Home extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 label: '',
-                icon: BottomIcon(
-                  iconSize: 25,
-                  icon: FontAwesomeIcons.solidMessage,
-                  color: 0xffD9CF75,
-                  iconColor: Colors.greenAccent,
+                icon: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MessageScreen(),
+                      ),
+                    );
+                  },
+                  child: BottomIcon(
+                    iconSize: 25,
+                    icon: FontAwesomeIcons.solidMessage,
+                    color: 0xffD9CF75,
+                    iconColor: Colors.greenAccent,
+                  ),
                 ),
               ),
             ],

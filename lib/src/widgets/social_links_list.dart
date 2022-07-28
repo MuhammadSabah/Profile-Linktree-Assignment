@@ -1,5 +1,5 @@
 import 'package:class_assignment/mock/data.dart';
-import 'package:class_assignment/src/components/social_card.dart';
+import 'package:class_assignment/src/widgets/social_card.dart';
 import 'package:class_assignment/src/models/social_model.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -27,7 +27,7 @@ class SocialLinksList extends StatelessWidget {
           child: SizedBox(
             width: 300,
             height: 50,
-            child: InkWell(
+            child: GestureDetector(
               onTap: () async {
                 final urlLink = Uri(
                   scheme: 'https',
