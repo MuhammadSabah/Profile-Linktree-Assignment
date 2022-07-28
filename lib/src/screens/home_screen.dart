@@ -82,12 +82,12 @@ class HomeScreen extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 label: '',
-                icon: InkWell(
+                icon: GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MessageScreen(),
+                        builder: (context) => const MessageScreen(),
                       ),
                     );
                   },

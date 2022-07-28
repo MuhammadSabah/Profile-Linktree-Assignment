@@ -10,6 +10,8 @@ class MessageDao {
   }
 
   Stream<QuerySnapshot> getMessagesStream() {
-    return _collection.snapshots();
+    // Descending (highest to lowest) with DateTime field:
+    // Newest date -> highest, Older dates -> lowest
+    return _collection.orderBy('date', descending: true).snapshots();
   }
 }
